@@ -4,6 +4,7 @@ const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list =document.getElementById("list");
 const input= document.getElementById("input");
+const plus=document.getElementById("PLUS");
 
 
 // classes names
@@ -63,6 +64,26 @@ document.addEventListener("keyup",function (ev){
     }
 });
 
+// plus buttom to do
+plus.addEventListener("click",function (){
+
+        const toDo=input.value;
+
+        //if the input isn't empty
+        if(toDo){
+            addToDo(toDo, id ,false ,false);
+
+            LIST.push({
+                name: toDo,
+                id : id,
+                done : false,
+                trash : false
+            });
+            id++;
+        }
+        input.value="";
+
+});
 // complete to do
 function completeToDo(element){
     element.classList.toggle(CHECK);
@@ -88,4 +109,5 @@ list.addEventListener("click", function (event){
     }else if (elementJob =="delete"){
         removeToDo(element);
     }
+
 });
